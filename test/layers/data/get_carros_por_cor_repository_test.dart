@@ -1,25 +1,14 @@
-import 'package:dart_clean/layers/data/dto/carro_dto.dart';
+import 'package:dart_clean/layers/data/datasources/get_carros_por_cor_datasource.dart';
+import 'package:dart_clean/layers/data/datasources/local/get_carros_por_cor_local_datasource_imp.dart';
+import 'package:dart_clean/layers/data/repositories/get_carros_por_cor_repository_imp.dart';
 import 'package:dart_clean/layers/domain/repositories/get_carros_por_cor_repository.dart';
-import 'package:dart_clean/layers/domain/entities/carro_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 
-class GetCarrosPorCorRepositoryImp implements GetCarrosPorCorRepository {
-  @override
-  CarroEntity call(String cor) {
-    // Chamamos a API e ela respondeu um Map
-    var json = {
-      "placa": "ABC123",
-      "quantidadeDePortas": 2,
-      "valorFinal": 1000.00
-    };
-
-    return CarroDto.fromMap(json);
-  }
-
-}
 main() {
-  GetCarrosPorCorRepository repository = GetCarrosPorCorRepositoryImp();
+
+  GetCarrosPorCorDataSource dataSource = GetCarrosPorCorLocalDataSourceImp();
+  GetCarrosPorCorRepository repository = GetCarrosPorCorRepositoryImp(dataSource);
 
   test('Devolva um carro independente da cor', () {
 

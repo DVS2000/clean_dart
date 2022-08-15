@@ -3,13 +3,10 @@ import 'package:dart_clean/layers/data/datasources/local/get_carros_por_cor_loca
 import 'package:dart_clean/layers/data/repositories/get_carros_por_cor_repository_imp.dart';
 import 'package:dart_clean/layers/domain/repositories/get_carros_por_cor_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-
 main() {
 
   GetCarrosPorCorDataSource dataSource = GetCarrosPorCorLocalDataSourceImp();
   GetCarrosPorCorRepository repository = GetCarrosPorCorRepositoryImp(dataSource);
-
   test('Devolva um carro independente da cor', () {
 
     var result = repository('qualquer');
